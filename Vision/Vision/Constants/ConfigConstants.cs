@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vision.Core {
+namespace Vision.Constants {
   public class ConfigConstants {
 
     #region Storage
@@ -16,6 +16,7 @@ namespace Vision.Core {
     #region Python
 
     public const string Key_PythonExecutePath = "python.execute.path";
+    public const string Key_PythonFilePath_ImageHash = "python.file.path.image.hash";
 
     #endregion Python
 

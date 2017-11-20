@@ -116,7 +116,7 @@ namespace ConsoleTest {
       string sourceFile2 = @"E:\OneDrive\Pictures\Camera Roll\WP_20170321_08_08_23_Rich.jpg"; // 6.90MB,7068KB
 
       Bitmap bmpSource1 = (Bitmap)Bitmap.FromFile( sourceFile1 );
-      using (var ms1 = Vision.Tools.ImageHelper.CompressBitmapToStream( bmpSource1 )) {
+      using (var ms1 = Vision.Tools.ImageHelper.CompressBitmapToStream( bmpSource1, Vision.Constants.ContentTypes.Jpeg )) {
         using (FileStream fs1 = new FileStream( @"C:\Users\jerin\Desktop\WP_20170226_11_16_32_Rich-clone.jpg", FileMode.Create, FileAccess.Write )) {
           ms1.WriteTo( fs1 );
           fs1.Flush();
@@ -126,7 +126,7 @@ namespace ConsoleTest {
       // 2.64MB
 
       Bitmap bmpSource2 = (Bitmap)Bitmap.FromFile( sourceFile2 );
-      using (var ms2 = Vision.Tools.ImageHelper.CompressBitmapToStream( bmpSource2 )) {
+      using (var ms2 = Vision.Tools.ImageHelper.CompressBitmapToStream( bmpSource2, Vision.Constants.ContentTypes.Jpeg )) {
         using (FileStream fs2 = new FileStream( @"C:\Users\jerin\Desktop\WP_20170321_08_08_23_Rich-clone.jpg", FileMode.Create, FileAccess.Write )) {
           ms2.WriteTo( fs2 );
           fs2.Flush();
@@ -171,6 +171,9 @@ namespace ConsoleTest {
 
     // worked @ 2017-4-15
     static void testImageHashUsingCommand() {
+      string PythonExecutePath = @"D:\Python27\python.exe";
+      string PythonScriptPath = @"E:\Projects\Vision\python\computeimagehash.py";
+
       string dir = @"C:\Users\jerin\Desktop\imagehash\";
       string file1 = dir + "imagehash.png";
       string file2 = dir + "lenna.png";
@@ -179,25 +182,25 @@ namespace ConsoleTest {
 
       Console.WriteLine( file1 );
       Console.WriteLine( DateTime.Now.ToLongTimeString() );
-      string hash1 = Vision.Runtime.PythonCommond.ComputeImageWHash( file1 );
+      string hash1 = Vision.Runtime.PythonCommond.ComputeImageWHash( PythonExecutePath, PythonScriptPath, file1 );
       Console.WriteLine( hash1 );
       Console.WriteLine( DateTime.Now.ToLongTimeString() );
 
       Console.WriteLine( file2 );
       Console.WriteLine( DateTime.Now.ToLongTimeString() );
-      string hash2 = Vision.Runtime.PythonCommond.ComputeImageWHash( file2 );
+      string hash2 = Vision.Runtime.PythonCommond.ComputeImageWHash( PythonExecutePath, PythonScriptPath, file2 );
       Console.WriteLine( hash2 );
       Console.WriteLine( DateTime.Now.ToLongTimeString() );
 
       Console.WriteLine( file3 );
       Console.WriteLine( DateTime.Now.ToLongTimeString() );
-      string hash3 = Vision.Runtime.PythonCommond.ComputeImageWHash( file3 );
+      string hash3 = Vision.Runtime.PythonCommond.ComputeImageWHash( PythonExecutePath, PythonScriptPath, file3 );
       Console.WriteLine( hash3 );
       Console.WriteLine( DateTime.Now.ToLongTimeString() );
 
       Console.WriteLine( file4 );
       Console.WriteLine( DateTime.Now.ToLongTimeString() );
-      string hash4 = Vision.Runtime.PythonCommond.ComputeImageWHash( file4 );
+      string hash4 = Vision.Runtime.PythonCommond.ComputeImageWHash( PythonExecutePath, PythonScriptPath, file4 );
       Console.WriteLine( hash4 );
       Console.WriteLine( DateTime.Now.ToLongTimeString() );
     }

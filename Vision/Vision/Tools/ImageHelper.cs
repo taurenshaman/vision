@@ -13,6 +13,7 @@ using Accord.Imaging.Filters;
 
 namespace Vision.Tools {
   public class ImageHelper {
+    
     public static Bitmap ReGenerate(byte[] data, int width, int height) {
       Bitmap img = null;
       using (var ms = new MemoryStream( data )) {
@@ -146,14 +147,14 @@ namespace Vision.Tools {
     /// <param name="srcBitmap"></param>
     /// <param name="imageQuality"></param>
     /// <returns></returns>
-    public static MemoryStream CompressBitmapToStream(Bitmap srcBitmap, long imageQuality = 90) {
+    public static MemoryStream CompressBitmapToStream(Bitmap srcBitmap, string contentType, long imageQuality = 90) {
       Bitmap bmp = Vision.Tools.ImageHelper.CopyBitmapSafe( srcBitmap );
 
       ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
       ImageCodecInfo ici = null;
 
       foreach (ImageCodecInfo codec in codecs) {
-        if (codec.MimeType == "image/jpeg")
+        if (codec.MimeType == contentType)
           ici = codec;
       }
 

@@ -71,5 +71,11 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vision.Core\Vision.Core.csproj">
+      <Project>{ac8c3d81-d1b8-4e5c-a164-432a8f0fb98a}</Project>
+      <Name>Vision.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

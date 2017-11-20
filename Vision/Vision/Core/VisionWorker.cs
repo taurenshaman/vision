@@ -56,58 +56,6 @@ namespace Vision.Core {
       visionService = new VisionServiceClient( visionSubscriptionKey, visionApiRoot );
     }
 
-    /// <summary>
-    /// compress the image, remove metadata. max size 4MB.
-    /// </summary>
-    /// <param name="sourceImageUrl"></param>
-    /// <returns></returns>
-    public async Task<string> CreateCompressed(string sourceImageUrl) {
-      System.Net.WebClient client = new System.Net.WebClient();
-      var srcData = await client.DownloadDataTaskAsync( sourceImageUrl );
-      // convert byte[] to jpeg
-      System.Drawing.Bitmap image = null;
-      bool cr = Tools.ImageHelper.TryGetImageFromBytes( srcData, out image );
-      if (!cr)
-        throw new Exception( "Cannot convert byte[] to System.Drawing.Image." );
-      
-      // compress
-      System.IO.MemoryStream stream = null;
-      long quality = 100L;
-      while (true) {
-        stream = Tools.ImageHelper.CompressBitmapToStream( image, quality ); // run at least one time to remove metadata.
-        if (stream.Length < MaxImageFileSize)
-          break;
-        quality = (long)( quality * ImageQualityDecreaseFactor );
-      }
-
-      // save
-
-      // return url
-      return null;
-    }
-
-    /// <summary>
-    /// create thumbnail. return thumbnail url.
-    /// TODO
-    /// </summary>
-    /// <param name="sourceImageUrl"></param>
-    /// <param name="width"></param>
-    /// <param name="height"></param>
-    /// <returns></returns>
-    public async Task<string> CreateThumbnail(string sourceImageUrl, int width = 300, int height = 300) {
-      var data = await visionService.GetThumbnailAsync( sourceImageUrl, width, height );
-      // convert byte[] to jpeg
-      System.Drawing.Bitmap image = null;
-      bool cr = Tools.ImageHelper.TryGetImageFromBytes( data, out image );
-      if (!cr)
-        throw new Exception( "Cannot convert byte[] to System.Drawing.Image." );
-
-      // save
-
-      // return url
-      return null;
-    }
-
     public async Task ProcessPhoto(string imageUrl) {
       var describeResult = await visionService.DescribeAsync( imageUrl, 3 );
       //describeResult.

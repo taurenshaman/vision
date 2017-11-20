@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vision.Core.Interfaces {
   public interface IStorage {
-    Task<string> Save(string containerName, Stream stream, string contentType, string filename);
+    Task<string> Save(string rootDirectory, string[] leftSubDirectories, string filename, string contentType, Stream stream);
 
   }
 
