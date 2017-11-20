@@ -106,7 +106,7 @@ namespace Vision.Core {
       string filepath = Path.Combine( rootDirectory, tmp, filename );
 
       string pythonExePath = System.Configuration.ConfigurationManager.AppSettings[Constants.ConfigConstants.Key_PythonExecutePath];
-      string pythonScriptPath = System.Configuration.ConfigurationManager.AppSettings[Constants.ConfigConstants.Key_PythonFilePath_ImageHash];
+      string pythonScriptPath = System.Configuration.ConfigurationManager.AppSettings[Constants.ConfigConstants.Key_PythonScriptPath_ImageHash];
 
       string hash = await Vision.Runtime.PythonCommond.ComputeImageWHash( pythonExePath, pythonScriptPath,filepath );
       return hash;

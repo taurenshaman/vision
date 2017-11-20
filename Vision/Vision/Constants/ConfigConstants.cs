@@ -16,7 +16,7 @@ namespace Vision.Constants {
     #region Python
 
     public const string Key_PythonExecutePath = "python.execute.path";
-    public const string Key_PythonFilePath_ImageHash = "python.file.path.image.hash";
+    public const string Key_PythonScriptPath_ImageHash = "python.script.path.image.hash";
 
     #endregion Python
 

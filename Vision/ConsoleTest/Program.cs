@@ -170,7 +170,7 @@ namespace ConsoleTest {
     }
 
     // worked @ 2017-4-15
-    static void testImageHashUsingCommand() {
+    static async void testImageHashUsingCommand() {
       string PythonExecutePath = @"D:\Python27\python.exe";
       string PythonScriptPath = @"E:\Projects\Vision\python\computeimagehash.py";
 
@@ -182,25 +182,25 @@ namespace ConsoleTest {
 
       Console.WriteLine( file1 );
       Console.WriteLine( DateTime.Now.ToLongTimeString() );
-      string hash1 = Vision.Runtime.PythonCommond.ComputeImageWHash( PythonExecutePath, PythonScriptPath, file1 );
+      string hash1 = await Vision.Runtime.PythonCommond.ComputeImageWHash( PythonExecutePath, PythonScriptPath, file1 );
       Console.WriteLine( hash1 );
       Console.WriteLine( DateTime.Now.ToLongTimeString() );
 
       Console.WriteLine( file2 );
       Console.WriteLine( DateTime.Now.ToLongTimeString() );
-      string hash2 = Vision.Runtime.PythonCommond.ComputeImageWHash( PythonExecutePath, PythonScriptPath, file2 );
+      string hash2 = await Vision.Runtime.PythonCommond.ComputeImageWHash( PythonExecutePath, PythonScriptPath, file2 );
       Console.WriteLine( hash2 );
       Console.WriteLine( DateTime.Now.ToLongTimeString() );
 
       Console.WriteLine( file3 );
       Console.WriteLine( DateTime.Now.ToLongTimeString() );
-      string hash3 = Vision.Runtime.PythonCommond.ComputeImageWHash( PythonExecutePath, PythonScriptPath, file3 );
+      string hash3 = await Vision.Runtime.PythonCommond.ComputeImageWHash( PythonExecutePath, PythonScriptPath, file3 );
       Console.WriteLine( hash3 );
       Console.WriteLine( DateTime.Now.ToLongTimeString() );
 
       Console.WriteLine( file4 );
       Console.WriteLine( DateTime.Now.ToLongTimeString() );
-      string hash4 = Vision.Runtime.PythonCommond.ComputeImageWHash( PythonExecutePath, PythonScriptPath, file4 );
+      string hash4 = await Vision.Runtime.PythonCommond.ComputeImageWHash( PythonExecutePath, PythonScriptPath, file4 );
       Console.WriteLine( hash4 );
       Console.WriteLine( DateTime.Now.ToLongTimeString() );
     }
